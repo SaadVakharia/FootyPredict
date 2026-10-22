@@ -11,6 +11,8 @@ env/
 venv/
 ENV/
 
+graphify-out/
+
 # Testing & Pytest
 .pytest_cache/
 **/.pytest_cache/
