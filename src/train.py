@@ -4,6 +4,7 @@ Trains Stage 1 Classifiers, Stage 2 Poisson Regressors, and saves models & metri
 """
 
 import os
+import sys
 import json
 import joblib
 import numpy as np
@@ -14,20 +15,28 @@ from sklearn.metrics import (
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.neural_network import MLPClassifier
-from data_loader import load_data, prepare_features, split_and_scale
+from data_loader import load_data, prepare_features, split_and_scale, split_chronological
 from model import DualStageFootballPredictor
 
 MODELS_DIR = os.path.join(os.path.dirname(__file__), "..", "models")
 REPORT_FIGS = os.path.join(os.path.dirname(__file__), "..", "report", "figures")
 
-def run_training_pipeline():
+def run_training_pipeline(use_chronological=True):
     os.makedirs(MODELS_DIR, exist_ok=True)
     os.makedirs(REPORT_FIGS, exist_ok=True)
 
     print("[1/4] Loading and preparing dataset...")
     df = load_data()
-    X, y_out, y_hg, y_ag = prepare_features(df)
-    data = split_and_scale(X, y_out, y_hg, y_ag, test_size=0.2, random_state=42)
+
+    if use_chronological:
+        print("  -> Using CHRONOLOGICAL split (prevents temporal leakage from rolling features)")
+        data = split_chronological(df, test_fraction=0.2)
+        print(f"     Train period: {data['train_date_range'][0]} to {data['train_date_range'][1]}")
+        print(f"     Test  period: {data['test_date_range'][0]} to {data['test_date_range'][1]}")
+    else:
+        print("  -> Using RANDOM stratified split (legacy mode)")
+        X, y_out, y_hg, y_ag = prepare_features(df)
+        data = split_and_scale(X, y_out, y_hg, y_ag, test_size=0.2, random_state=42)
 
     X_train, X_test = data["X_train"], data["X_test"]
     y_train, y_test = data["y_out_train"], data["y_out_test"]
@@ -123,8 +132,14 @@ def run_training_pipeline():
             "total": len(df),
             "train": len(X_train),
             "test": len(X_test)
-        }
+        },
+        "split_method": data["split_method"]
     }
+
+    # Include date ranges if chronological split was used
+    if "train_date_range" in data:
+        results_payload["train_date_range"] = data["train_date_range"]
+        results_payload["test_date_range"] = data["test_date_range"]
 
     with open(os.path.join(MODELS_DIR, "evaluation_results.json"), "w", encoding="utf-8") as f:
         json.dump(results_payload, f, indent=2)
@@ -133,4 +148,5 @@ def run_training_pipeline():
     return results_payload
 
 if __name__ == "__main__":
-    run_training_pipeline()
+    use_random = "--random-split" in sys.argv
+    run_training_pipeline(use_chronological=not use_random)

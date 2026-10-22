@@ -1,0 +1,27 @@
+# Bytecode & Cache
+__pycache__/
+**/__pycache__/
+src/__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Testing & Pytest
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Documentation & Scratch Artifacts
+PR_DESCRIPTION.md

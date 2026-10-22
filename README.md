@@ -65,7 +65,9 @@ AI_DS_II/
 ├── report/
 │   ├── figures/                     # High-resolution publication charts
 │   └── FootyPredict_Mini_Project_Report.docx  # Formatted 5-page submission document
-├── requirements.txt                 # Exact pinned dependencies
+├── tests/
+│   └── test_footypredict.py         # Comprehensive pytest suite (38 unit & regression tests)
+├── requirements.txt                 # Exact pinned dependencies (includes pytest)
 └── README.md
 ```
 
@@ -83,17 +85,27 @@ cd FootyPredict
 pip install -r requirements.txt
 ```
 
-### 2. Run Training & Benchmarking
+### 2. Run Automated Test Suite
+```bash
+pytest tests/ -v
+```
+
+### 3. Run Training & Benchmarking
+By default, training uses a **chronological split** (earliest 80% train, latest 20% test) to prevent temporal data leakage from rolling features:
 ```bash
 python src/train.py
 ```
+To reproduce the legacy random-stratified benchmark split:
+```bash
+python src/train.py --random-split
+```
 
-### 3. Generate Evaluation Figures
+### 4. Generate Evaluation Figures
 ```bash
 python src/evaluate.py
 ```
 
-### 4. Launch Interactive Web Dashboard
+### 5. Launch Interactive Web Dashboard
 Simply open `app/index.html` in any modern web browser, or serve locally:
 ```bash
 python -m http.server 8000 --directory app
