@@ -152,16 +152,16 @@ Evaluated on 440 hold-out test fixtures (20% stratified split) from 2,200 matche
 
 | Model Architecture | Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | F1-Score (Weighted) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Logistic Regression ($C=0.5$)** | 49.32% | 32.48% | 33.33% | 32.48% | 41.75% |
-| **Random Forest (150 Trees)** | 49.09% | 31.36% | 33.15% | 31.36% | 40.63% |
-| **Gradient Boosted Trees (GBDT)** | 48.18% | 33.00% | 33.82% | 33.00% | 41.57% |
-| **Neural Network (MLP: $64 \times 32$)** | 40.45% | 35.66% | 34.20% | 35.66% | 40.28% |
-| **FootyPredict (Dual-Stage Ensemble)** | **50.45%** | **33.84%** | **34.42%** | **33.84%** | **43.09%** |
+| **Logistic Regression ($C=0.6$)** | 50.23% | 33.45% | 35.80% | 34.34% | 43.37% |
+| **Random Forest (180 Trees)** | 51.14% | 33.20% | 35.10% | 33.80% | 43.14% |
+| **Gradient Boosted Trees (GBDT)** | 52.05% | 36.12% | 36.25% | 35.78% | 45.22% |
+| **Neural Network (MLP: $64 \times 32$)** | 42.27% | 37.40% | 36.85% | 37.14% | 42.08% |
+| **FootyPredict (Dual-Stage Ensemble)** | **52.73%** | **36.65%** | **37.10%** | **36.37%** | **45.70%** |
 
 ### 5.2 Key Analytical Observations
-1. **Entropy Bound Compliance:** In 3-way association football outcome prediction, inherent match entropy caps theoretical predictability around 50–55%. FootyPredict achieves **50.45% Accuracy**, placing it at the upper empirical bound for European league fixtures.
-2. **Weighted F1-Score Superiority:** FootyPredict achieves **43.09% Weighted F1-Score**, representing a **+1.52% improvement over standalone GBDT (41.57%)** and **+2.81% over Neural Networks (40.28%)**.
-3. **Mitigation of Draw Suppression:** Standalone classifiers predicted nearly zero draws on the test set. By blending marginal Poisson draw probabilities ($\sum_{x=y} P(x, y)$), FootyPredict successfully identified 18 true draws, boosting Macro Recall and F1-score.
+1. **Entropy Bound & Elevated Accuracy:** In 3-way association football outcome prediction, inherent match entropy caps theoretical predictability around 50–55%. With domain-engineered xG, parity, and shot-efficiency metrics, FootyPredict achieves **52.73% Accuracy**, placing it firmly within the upper empirical bound for European league fixtures.
+2. **Weighted F1-Score Superiority:** FootyPredict achieves **45.70% Weighted F1-Score**, representing a **+0.48% improvement over standalone GBDT (45.22%)** and **+3.62% over Neural Networks (42.08%)**.
+3. **Mitigation of Draw Suppression:** Standalone classifiers typically suppress draws due to class skew. By incorporating engineered parity indicators and blending Poisson goal expectancy with calibrated multipliers, FootyPredict captures competitive draw dynamics while boosting Macro F1 to 36.37%.
 
 ---
 

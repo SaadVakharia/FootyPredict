@@ -1,0 +1,325 @@
+{
+  "Premier League": [
+    {
+      "name": "Arsenal",
+      "espn_id": "359",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+      "color": "e20520",
+      "form": [
+        "L",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 6,
+      "rest": 6
+    },
+    {
+      "name": "Manchester City",
+      "espn_id": "382",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+      "color": "99c5ea",
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 10,
+      "rest": 6
+    },
+    {
+      "name": "Liverpool",
+      "espn_id": "364",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+      "color": "d11317",
+      "form": [
+        "W",
+        "D",
+        "W",
+        "D",
+        "D"
+      ],
+      "gd": 4,
+      "rest": 6
+    },
+    {
+      "name": "Chelsea",
+      "espn_id": "363",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+      "color": "144992",
+      "form": [
+        "L",
+        "D",
+        "L",
+        "W",
+        "W"
+      ],
+      "gd": 0,
+      "rest": 6
+    },
+    {
+      "name": "Tottenham",
+      "espn_id": "367",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+      "color": "ffffff",
+      "form": [
+        "L",
+        "D",
+        "D",
+        "L",
+        "L"
+      ],
+      "gd": -6,
+      "rest": 6
+    },
+    {
+      "name": "Aston Villa",
+      "espn_id": "362",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+      "color": "660e36",
+      "form": [
+        "W",
+        "L",
+        "D",
+        "L",
+        "L"
+      ],
+      "gd": -4,
+      "rest": 6
+    },
+    {
+      "name": "Newcastle United",
+      "espn_id": "361",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+      "color": "000000",
+      "form": [
+        "W",
+        "L",
+        "D",
+        "W",
+        "D"
+      ],
+      "gd": 2,
+      "rest": 6
+    },
+    {
+      "name": "Manchester United",
+      "espn_id": "360",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+      "color": "da020e",
+      "form": [
+        "D",
+        "L",
+        "D",
+        "W",
+        "L"
+      ],
+      "gd": -2,
+      "rest": 6
+    }
+  ],
+  "La Liga": [
+    {
+      "name": "Real Madrid",
+      "espn_id": "86",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+      "color": "ffffff",
+      "form": [
+        "W",
+        "L",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 6,
+      "rest": 6
+    },
+    {
+      "name": "Barcelona",
+      "espn_id": "83",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+      "color": "990000",
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 10,
+      "rest": 6
+    },
+    {
+      "name": "Atletico Madrid",
+      "espn_id": "1068",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+      "color": "ca3624",
+      "form": [
+        "W",
+        "L",
+        "W",
+        "D",
+        "W"
+      ],
+      "gd": 4,
+      "rest": 6
+    },
+    {
+      "name": "Athletic Bilbao",
+      "espn_id": "93",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+      "color": "C8142F",
+      "form": [
+        "D",
+        "W",
+        "W",
+        "L",
+        "L"
+      ],
+      "gd": 0,
+      "rest": 6
+    },
+    {
+      "name": "Real Sociedad",
+      "espn_id": "89",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+      "color": "3366CC",
+      "form": [
+        "W",
+        "D",
+        "W",
+        "L",
+        "L"
+      ],
+      "gd": 0,
+      "rest": 6
+    }
+  ],
+  "Bundesliga": [
+    {
+      "name": "Bayern Munich",
+      "espn_id": "132",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+      "color": "dc052d",
+      "form": [
+        "D",
+        "W",
+        "W",
+        "D",
+        "W"
+      ],
+      "gd": 6,
+      "rest": 6
+    },
+    {
+      "name": "Bayer Leverkusen",
+      "espn_id": "131",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+      "color": "DA0308",
+      "form": [
+        "W",
+        "W",
+        "D",
+        "W",
+        "L"
+      ],
+      "gd": 4,
+      "rest": 6
+    },
+    {
+      "name": "Borussia Dortmund",
+      "espn_id": "124",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+      "color": "ffee00",
+      "form": [
+        "D",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 8,
+      "rest": 6
+    },
+    {
+      "name": "RB Leipzig",
+      "espn_id": "11420",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+      "color": "ffffff",
+      "form": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "W"
+      ],
+      "gd": 2,
+      "rest": 6
+    }
+  ],
+  "Serie A": [
+    {
+      "name": "Inter Milan",
+      "espn_id": "110",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+      "color": "00239c",
+      "form": [
+        "D",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "gd": 8,
+      "rest": 6
+    },
+    {
+      "name": "Juventus",
+      "espn_id": "111",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+      "color": "000000",
+      "form": [
+        "W",
+        "L",
+        "D",
+        "W",
+        "W"
+      ],
+      "gd": 4,
+      "rest": 6
+    },
+    {
+      "name": "AC Milan",
+      "espn_id": "103",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+      "color": "e4002b",
+      "form": [
+        "W",
+        "D",
+        "D",
+        "W",
+        "W"
+      ],
+      "gd": 6,
+      "rest": 6
+    },
+    {
+      "name": "Napoli",
+      "espn_id": "114",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+      "color": "0677d2",
+      "form": [
+        "D",
+        "W",
+        "L",
+        "L",
+        "W"
+      ],
+      "gd": 0,
+      "rest": 6
+    }
+  ]
+}

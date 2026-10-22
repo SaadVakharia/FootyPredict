@@ -1,56 +1,56 @@
 {
   "metrics_summary": {
     "Logistic Regression": {
-      "Accuracy": 49.32,
-      "Precision_Macro": 30.77,
-      "Recall_Macro": 37.05,
-      "F1_Macro": 32.48,
-      "F1_Weighted": 41.75
+      "Accuracy": 50.23,
+      "Precision_Macro": 32.26,
+      "Recall_Macro": 38.55,
+      "F1_Macro": 34.34,
+      "F1_Weighted": 43.37
     },
     "Random Forest": {
-      "Accuracy": 49.09,
-      "Precision_Macro": 31.23,
-      "Recall_Macro": 36.27,
-      "F1_Macro": 31.36,
-      "F1_Weighted": 40.63
+      "Accuracy": 51.14,
+      "Precision_Macro": 33.36,
+      "Recall_Macro": 38.37,
+      "F1_Macro": 33.8,
+      "F1_Weighted": 43.14
     },
     "Gradient Boosting": {
-      "Accuracy": 48.18,
-      "Precision_Macro": 37.57,
-      "Recall_Macro": 36.68,
-      "F1_Macro": 33.0,
-      "F1_Weighted": 41.57
+      "Accuracy": 52.05,
+      "Precision_Macro": 34.32,
+      "Recall_Macro": 39.79,
+      "F1_Macro": 35.78,
+      "F1_Weighted": 45.22
     },
     "Neural Network": {
-      "Accuracy": 40.45,
-      "Precision_Macro": 35.73,
-      "Recall_Macro": 35.63,
-      "F1_Macro": 35.66,
-      "F1_Weighted": 40.28
+      "Accuracy": 42.27,
+      "Precision_Macro": 37.19,
+      "Recall_Macro": 37.26,
+      "F1_Macro": 37.14,
+      "F1_Weighted": 42.08
     },
     "FootyPredict (Dual-Stage Ensemble)": {
-      "Accuracy": 50.45,
-      "Precision_Macro": 32.52,
-      "Recall_Macro": 38.17,
-      "F1_Macro": 33.84,
-      "F1_Weighted": 43.09
+      "Accuracy": 52.73,
+      "Precision_Macro": 38.74,
+      "Recall_Macro": 40.21,
+      "F1_Macro": 36.37,
+      "F1_Weighted": 45.7
     }
   },
   "confusion_matrix": [
     [
-      178,
-      1,
-      37
+      184,
+      2,
+      30
     ],
     [
-      71,
-      0,
-      16
+      67,
+      1,
+      19
     ],
     [
-      92,
-      1,
-      44
+      85,
+      5,
+      47
     ]
   ],
   "classes": [
@@ -73,28 +73,45 @@
     "HomeShotsOnTarget",
     "AwayShotsOnTarget",
     "HomeCorners",
-    "AwayCorners"
+    "AwayCorners",
+    "xGDiff",
+    "TotalxG",
+    "EloParity",
+    "FormParity",
+    "HomeShotAccuracy",
+    "AwayShotAccuracy",
+    "ShotDominance",
+    "RestDiff"
   ],
   "feature_importances": {
-    "EloDiff": 0.1567,
-    "HomeElo": 0.1199,
-    "AwayElo": 0.1394,
-    "HomeFormPts5": 0.0453,
-    "AwayFormPts5": 0.0528,
-    "HomeFormGD5": 0.064,
-    "AwayFormGD5": 0.0398,
-    "RestDaysHome": 0.0271,
-    "RestDaysAway": 0.029,
-    "HomeShots": 0.0414,
-    "AwayShots": 0.0809,
-    "HomeShotsOnTarget": 0.0357,
-    "AwayShotsOnTarget": 0.0987,
-    "HomeCorners": 0.0328,
-    "AwayCorners": 0.0366
+    "EloDiff": 0.0421,
+    "HomeElo": 0.0749,
+    "AwayElo": 0.0579,
+    "HomeFormPts5": 0.0383,
+    "AwayFormPts5": 0.0322,
+    "HomeFormGD5": 0.0402,
+    "AwayFormGD5": 0.0259,
+    "RestDaysHome": 0.0131,
+    "RestDaysAway": 0.0131,
+    "HomeShots": 0.0235,
+    "AwayShots": 0.0162,
+    "HomeShotsOnTarget": 0.007,
+    "AwayShotsOnTarget": 0.0236,
+    "HomeCorners": 0.0299,
+    "AwayCorners": 0.0274,
+    "xGDiff": 0.1884,
+    "TotalxG": 0.0628,
+    "EloParity": 0.0439,
+    "FormParity": 0.02,
+    "HomeShotAccuracy": 0.0561,
+    "AwayShotAccuracy": 0.1283,
+    "ShotDominance": 0.0182,
+    "RestDiff": 0.0169
   },
   "sample_size": {
     "total": 2200,
     "train": 1760,
     "test": 440
-  }
+  },
+  "split_method": "random_stratified"
 }

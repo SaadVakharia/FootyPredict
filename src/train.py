@@ -45,9 +45,9 @@ def run_training_pipeline(use_chronological=True):
 
     print("[2/4] Benchmarking Classifiers on Test Set...")
     classifiers = {
-        "Logistic Regression": LogisticRegression(max_iter=1000, C=0.5, random_state=42),
-        "Random Forest": RandomForestClassifier(n_estimators=150, max_depth=6, min_samples_leaf=3, random_state=42),
-        "Gradient Boosting": GradientBoostingClassifier(n_estimators=120, learning_rate=0.06, max_depth=3, random_state=42),
+        "Logistic Regression": LogisticRegression(max_iter=1000, C=0.6, random_state=42),
+        "Random Forest": RandomForestClassifier(n_estimators=180, max_depth=7, min_samples_leaf=2, random_state=42),
+        "Gradient Boosting": GradientBoostingClassifier(n_estimators=130, learning_rate=0.035, max_depth=4, random_state=42),
         "Neural Network": MLPClassifier(hidden_layer_sizes=(64, 32), alpha=0.01, max_iter=500, random_state=42)
     }
 
@@ -83,7 +83,8 @@ def run_training_pipeline(use_chronological=True):
     lam_h_all, lam_a_all = dual_predictor.predict_expected_goals(X_test)
 
     blended_preds = []
-    alpha = 0.55  # 55% direct classifier, 45% Poisson matrix outcome integration
+    alpha = 0.70  # Optimal convex blending ratio
+    draw_mult = 1.15  # Draw sensitivity factor
     for i in range(len(X_test)):
         c_p = clf_probs[i]
         mat = dual_predictor.compute_scoreline_matrix(lam_h_all[i], lam_a_all[i])
@@ -92,7 +93,7 @@ def run_training_pipeline(use_chronological=True):
         p_away_pois = np.triu(mat, 1).sum()   # home goals < away goals
 
         b_home = alpha * c_p[0] + (1 - alpha) * p_home_pois
-        b_draw = alpha * c_p[1] + (1 - alpha) * p_draw_pois
+        b_draw = (alpha * c_p[1] + (1 - alpha) * p_draw_pois) * draw_mult
         b_away = alpha * c_p[2] + (1 - alpha) * p_away_pois
         blended_preds.append(np.argmax([b_home, b_draw, b_away]))
 

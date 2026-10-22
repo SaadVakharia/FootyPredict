@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-FEATURE_COLS = [
+CORE_FEATURE_COLS = [
     "EloDiff",
     "HomeElo",
     "AwayElo",
@@ -28,8 +28,34 @@ FEATURE_COLS = [
     "AwayCorners"
 ]
 
+ENGINEERED_FEATURE_COLS = [
+    "xGDiff",
+    "TotalxG",
+    "EloParity",
+    "FormParity",
+    "HomeShotAccuracy",
+    "AwayShotAccuracy",
+    "ShotDominance",
+    "RestDiff"
+]
+
+FEATURE_COLS = CORE_FEATURE_COLS + ENGINEERED_FEATURE_COLS
+
 OUTCOME_MAPPING = {"H": 0, "D": 1, "A": 2}
 INV_OUTCOME_MAPPING = {0: "Home Win", 1: "Draw", 2: "Away Win"}
+
+def add_engineered_features(df):
+    """Computes domain-engineered features from raw match statistics."""
+    data = df.copy()
+    data["xGDiff"] = data["HomexG"] - data["AwayxG"]
+    data["TotalxG"] = data["HomexG"] + data["AwayxG"]
+    data["EloParity"] = (data["HomeElo"] - data["AwayElo"]).abs()
+    data["FormParity"] = (data["HomeFormPts5"] - data["AwayFormPts5"]).abs()
+    data["HomeShotAccuracy"] = data["HomeShotsOnTarget"] / (data["HomeShots"] + 1.0)
+    data["AwayShotAccuracy"] = data["AwayShotsOnTarget"] / (data["AwayShots"] + 1.0)
+    data["ShotDominance"] = data["HomeShotsOnTarget"] - data["AwayShotsOnTarget"]
+    data["RestDiff"] = data["RestDaysHome"] - data["RestDaysAway"]
+    return data
 
 def load_data(filepath=None):
     if filepath is None:
@@ -39,13 +65,14 @@ def load_data(filepath=None):
 
 def prepare_features(df):
     """
-    Extracts numerical feature matrix X, outcome labels y_outcome,
-    and goal targets y_home_goals, y_away_goals.
+    Extracts numerical feature matrix X with engineered domain features,
+    outcome labels y_outcome, and goal targets y_home_goals, y_away_goals.
     """
-    X = df[FEATURE_COLS].copy()
-    y_outcome = df["FTR"].map(OUTCOME_MAPPING).values
-    y_home_goals = df["FTHG"].values
-    y_away_goals = df["FTAG"].values
+    df_feat = add_engineered_features(df)
+    X = df_feat[FEATURE_COLS].copy()
+    y_outcome = df_feat["FTR"].map(OUTCOME_MAPPING).values
+    y_home_goals = df_feat["FTHG"].values
+    y_away_goals = df_feat["FTAG"].values
     return X, y_outcome, y_home_goals, y_away_goals
 
 def split_and_scale(X, y_outcome, y_home_goals, y_away_goals, test_size=0.2, random_state=42):
@@ -108,7 +135,8 @@ def split_chronological(df, test_fraction=0.2):
     if not 0.0 < test_fraction < 1.0:
         raise ValueError(f"test_fraction must be between 0 and 1 exclusive, got {test_fraction}.")
 
-    df_sorted = df.sort_values("Date").reset_index(drop=True)
+    df_feat = add_engineered_features(df)
+    df_sorted = df_feat.sort_values("Date").reset_index(drop=True)
     split_idx = int(len(df_sorted) * (1 - test_fraction))
 
     if split_idx == 0 or split_idx == len(df_sorted):

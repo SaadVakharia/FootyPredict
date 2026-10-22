@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FootyPredict — Dual-Stage Football Match & Scoreline Prediction Engine</title>
-  <meta name="description" content="AI & DS II individual project: Dual-stage machine learning system combining Gradient Boosted Trees and Bivariate Poisson modeling for match outcome and exact scoreline forecasting." />
+  <meta name="description" content="Dual-stage machine learning system combining Gradient Boosted Decision Trees and Bivariate Poisson modeling for match outcome and exact scoreline forecasting." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,20 +27,6 @@
       <div class="brand-title">
         <span class="brand-name">FootyPredict</span>
         <span class="engine-tag">Dual-Stage ML v2.4</span>
-      </div>
-    </div>
-
-    <div class="header-status">
-      <div class="status-indicator">
-        <span class="pulse-dot"></span>
-        <span class="status-text">Bivariate Poisson & GBDT Online</span>
-      </div>
-      <div class="academic-badge">
-        <span class="student-name">Saad Vakharia</span>
-        <span class="meta-sep">•</span>
-        <span class="roll-number">Roll 155</span>
-        <span class="meta-sep">•</span>
-        <span class="course-code">AI & DS II</span>
       </div>
     </div>
   </header>
@@ -101,10 +87,27 @@
         <button class="preset-chip" data-home="Bayern Munich" data-away="Borussia Dortmund" data-league="Bundesliga">Der Klassiker</button>
         <button class="preset-chip" data-home="Inter Milan" data-away="AC Milan" data-league="Serie A">Derby della Madonnina</button>
       </div>
+
+      <!-- Navigation Views Bar -->
+      <div class="view-tabs-bar">
+        <button class="view-tab active" data-target="analytics-view">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          Dual-Stage Analytics
+        </button>
+        <button class="view-tab" data-target="simulation-view">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Match Simulator & Timeline
+        </button>
+        <button class="view-tab" data-target="squads-view">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Squads & Player Ratings
+        </button>
+      </div>
     </section>
 
-    <!-- Two-Column Analytics Layout -->
-    <div class="analytics-layout">
+    <!-- 1. Dual-Stage Analytics View -->
+    <div id="analytics-view" class="view-container active">
+      <div class="analytics-layout">
 
       <!-- Left Column: Primary Predictions & Goal Expectancy -->
       <div class="col-primary">
@@ -240,7 +243,7 @@
 
       </div>
 
-      <!-- Right Column: Academic Validation & Model Benchmark -->
+      <!-- Right Column: Model Benchmarks & Validation -->
       <div class="col-secondary">
 
         <!-- Assessment Metrics Table Card -->
@@ -248,7 +251,7 @@
           <div class="card-header">
             <div class="card-title-group">
               <span class="stage-tag neutral-tag">BENCHMARK</span>
-              <h2 class="card-heading">Faculty Assessment Metrics</h2>
+              <h2 class="card-heading">Model Architecture Benchmarks</h2>
             </div>
             <span class="mono-meta">Test Split: 440 Matches</span>
           </div>
@@ -265,41 +268,41 @@
               </thead>
               <tbody id="benchmark-tbody">
                 <tr>
-                  <td>Logistic Regression</td>
-                  <td class="mono-cell">49.32%</td>
-                  <td class="mono-cell">32.48%</td>
-                  <td class="mono-cell">41.75%</td>
+                  <td>Logistic Regression (C=0.6)</td>
+                  <td class="mono-cell">50.23%</td>
+                  <td class="mono-cell">34.34%</td>
+                  <td class="mono-cell">43.37%</td>
                 </tr>
                 <tr>
-                  <td>Random Forest (150 Trees)</td>
-                  <td class="mono-cell">49.09%</td>
-                  <td class="mono-cell">31.36%</td>
-                  <td class="mono-cell">40.63%</td>
+                  <td>Random Forest (180 Trees)</td>
+                  <td class="mono-cell">51.14%</td>
+                  <td class="mono-cell">33.80%</td>
+                  <td class="mono-cell">43.14%</td>
                 </tr>
                 <tr>
                   <td>Gradient Boosting (GBDT)</td>
-                  <td class="mono-cell">48.18%</td>
-                  <td class="mono-cell">33.00%</td>
-                  <td class="mono-cell">41.57%</td>
+                  <td class="mono-cell">52.05%</td>
+                  <td class="mono-cell">35.78%</td>
+                  <td class="mono-cell">45.22%</td>
                 </tr>
                 <tr>
                   <td>Neural Network (MLP)</td>
-                  <td class="mono-cell">40.45%</td>
-                  <td class="mono-cell">35.66%</td>
-                  <td class="mono-cell">40.28%</td>
+                  <td class="mono-cell">42.27%</td>
+                  <td class="mono-cell">37.14%</td>
+                  <td class="mono-cell">42.08%</td>
                 </tr>
                 <tr class="highlight-row">
                   <td><strong>FootyPredict Dual-Stage</strong></td>
-                  <td class="mono-cell highlight-cell">50.45%</td>
-                  <td class="mono-cell highlight-cell">33.84%</td>
-                  <td class="mono-cell highlight-cell">43.09%</td>
+                  <td class="mono-cell highlight-cell">52.73%</td>
+                  <td class="mono-cell highlight-cell">36.37%</td>
+                  <td class="mono-cell highlight-cell">45.70%</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="card-caption">
-            *Football match outcome prediction is inherently bounded by game entropy (~50-55% SOTA multi-class predictability on 3 classes). Dual-stage blending improves weighted F1-score by +1.52% over standalone GBDT.
+            *Football match outcome prediction is inherently bounded by game entropy (~50-55% theoretical predictability on 3 classes). Dual-stage blending with engineered xG and parity features achieves 52.73% Accuracy and 45.70% Weighted F1.
           </div>
         </div>
 
@@ -385,22 +388,174 @@
 
       </div>
     </div>
+    </div>
+    <!-- End Analytics View -->
+
+    <!-- 2. Match Simulator & Timeline View -->
+    <div id="simulation-view" class="view-container">
+      <div class="simulation-hero-card">
+        <div class="sim-scoreboard-header">
+          <div class="sim-team-box home-side">
+            <span class="sim-team-crest" id="sim-home-crest">ARS</span>
+            <div class="sim-team-info">
+              <span class="sim-team-name" id="sim-home-name">Arsenal</span>
+              <span class="sim-team-sub" id="sim-home-elo">1890 Elo • Home</span>
+            </div>
+          </div>
+
+          <div class="sim-center-score">
+            <div class="sim-clock-badge" id="sim-clock">READY</div>
+            <div class="sim-score-digits">
+              <span id="sim-score-h">0</span>
+              <span class="sim-colon">:</span>
+              <span id="sim-score-a">0</span>
+            </div>
+            <span class="sim-status-label" id="sim-status-label">Simulated Match — Click 'Play Live Match'</span>
+          </div>
+
+          <div class="sim-team-box away-side">
+            <div class="sim-team-info text-right">
+              <span class="sim-team-name" id="sim-away-name">Chelsea</span>
+              <span class="sim-team-sub" id="sim-away-elo">1780 Elo • Away</span>
+            </div>
+            <span class="sim-team-crest" id="sim-away-crest">CHE</span>
+          </div>
+        </div>
+
+        <!-- Simulation Quick Stats Banner -->
+        <div class="sim-stats-strip">
+          <div class="sim-stat-pill">
+            <span class="pill-label">xG Duel</span>
+            <span class="pill-val" id="sim-stat-xg">2.18 — 1.05</span>
+          </div>
+          <div class="sim-stat-pill">
+            <span class="pill-label">Possession</span>
+            <span class="pill-val" id="sim-stat-poss">50% — 50%</span>
+          </div>
+          <div class="sim-stat-pill">
+            <span class="pill-label">Shots (Target)</span>
+            <span class="pill-val" id="sim-stat-shots">0 (0) — 0 (0)</span>
+          </div>
+          <div class="sim-stat-pill">
+            <span class="pill-label">Tempo</span>
+            <span class="pill-val" id="sim-stat-tempo">High Intensity</span>
+          </div>
+        </div>
+
+        <!-- Live Match Progress Ticker -->
+        <div class="sim-progress-wrapper" id="sim-progress-wrapper">
+          <div class="sim-progress-bar-track">
+            <div class="sim-progress-fill" id="sim-progress-fill" style="width: 0%;"></div>
+            <div class="sim-progress-events-markers" id="sim-progress-markers"></div>
+          </div>
+          <div class="sim-progress-labels">
+            <span>0' Kickoff</span>
+            <span>45' HT</span>
+            <span>90' Full Time</span>
+          </div>
+        </div>
+
+        <!-- Action Control Bar -->
+        <div class="sim-control-bar">
+          <div class="sim-buttons-group">
+            <button id="btn-play-sim" class="primary-btn sim-play-btn">
+              <svg id="sim-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span id="sim-play-text">Play Live Match</span>
+            </button>
+            <button id="btn-instant-sim" class="secondary-btn" title="Skip animation and get instant result">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Instant Result</span>
+            </button>
+            <div class="speed-toggle-group">
+              <span class="speed-label">Speed:</span>
+              <button class="speed-btn" data-speed="1">1x</button>
+              <button class="speed-btn active" data-speed="3">3x</button>
+              <button class="speed-btn" data-speed="6">6x</button>
+            </div>
+          </div>
+          <span class="sim-control-hint" id="sim-status-hint">Randomized simulation based on Bivariate Poisson expectancy.</span>
+        </div>
+      </div>
+
+      <!-- Simulation Split Columns -->
+      <div class="sim-columns-grid">
+        <!-- Match Timeline Column -->
+        <div class="analytics-card timeline-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="stage-tag pitch-tag">TIMELINE</span>
+              <h2 class="card-heading">Minute-by-Minute Match Commentary & Events</h2>
+            </div>
+            <span class="mono-meta" id="sim-events-count">Key Events</span>
+          </div>
+
+          <div class="match-timeline-feed" id="match-timeline-feed">
+            <!-- Dynamic events populated by JS -->
+          </div>
+        </div>
+
+        <!-- Post Match Ratings & MOTM Column -->
+        <div class="analytics-card motm-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="stage-tag gold-tag">MOTM</span>
+              <h2 class="card-heading">Man of the Match & Post-Game Ratings</h2>
+            </div>
+            <span class="mono-meta">Dynamic Performance Index</span>
+          </div>
+
+          <!-- Hero MOTM Card -->
+          <div class="motm-hero-display" id="motm-hero-display">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Top Performers List -->
+          <div class="top-performers-section">
+            <div class="section-title">Highest Impact Performers</div>
+            <div class="performers-list" id="top-performers-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Simulation View -->
+
+    <!-- 3. Team Squads & Player Ratings View -->
+    <div id="squads-view" class="view-container">
+      <div class="squads-header-panel">
+        <div class="squad-team-selector">
+          <button class="squad-team-btn active" id="squad-tab-home">
+            <span id="squad-btn-home-name">Arsenal Squad</span>
+          </button>
+          <button class="squad-team-btn" id="squad-tab-away">
+            <span id="squad-btn-away-name">Chelsea Squad</span>
+          </button>
+        </div>
+
+        <!-- Position Filter Chips -->
+        <div class="position-filter-bar">
+          <button class="pos-chip active" data-pos="ALL">All Positions</button>
+          <button class="pos-chip" data-pos="FW">Forwards</button>
+          <button class="pos-chip" data-pos="MF">Midfielders</button>
+          <button class="pos-chip" data-pos="DF">Defenders</button>
+          <button class="pos-chip" data-pos="GK">Goalkeepers</button>
+        </div>
+      </div>
+
+      <div class="squad-cards-grid" id="squad-cards-grid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+    <!-- End Squads View -->
+
   </main>
 
-  <!-- Technical Footer -->
-  <footer class="app-footer">
-    <div class="footer-left">
-      <span>Atharva College of Engineering • Dept. of Information Technology</span>
-      <span class="meta-sep">•</span>
-      <span>Course: AI & DS II</span>
-    </div>
-    <div class="footer-right">
-      <span>Framework: Scikit-Learn 1.9 & SciPy Poisson</span>
-      <span class="meta-sep">•</span>
-      <span>Student: Saad Vakharia (Roll 155)</span>
-    </div>
-  </footer>
-
+  <script src="players_data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -26,13 +26,13 @@ class DualStageFootballPredictor:
 
     def _init_classifier(self, clf_type):
         if clf_type == "logistic_regression":
-            return LogisticRegression(max_iter=1000, random_state=42)
+            return LogisticRegression(C=0.6, max_iter=1000, random_state=42)
         elif clf_type == "random_forest":
-            return RandomForestClassifier(n_estimators=150, max_depth=7, random_state=42)
+            return RandomForestClassifier(n_estimators=180, max_depth=7, min_samples_leaf=2, random_state=42)
         elif clf_type == "gradient_boosting":
-            return GradientBoostingClassifier(n_estimators=120, learning_rate=0.08, max_depth=3, random_state=42)
+            return GradientBoostingClassifier(n_estimators=130, learning_rate=0.035, max_depth=4, random_state=42)
         elif clf_type == "mlp":
-            return MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=400, random_state=42)
+            return MLPClassifier(hidden_layer_sizes=(64, 32), alpha=0.01, max_iter=500, random_state=42)
         else:
             raise ValueError(f"Unknown classifier type: {clf_type}")
 
@@ -120,10 +120,10 @@ def benchmark_all_classifiers(X_train, y_train, X_test, y_test):
     Accuracy, Precision (macro), Recall (macro), and F1-Score (macro & weighted).
     """
     models = {
-        "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
-        "Random Forest": RandomForestClassifier(n_estimators=150, max_depth=7, random_state=42),
-        "Gradient Boosting": GradientBoostingClassifier(n_estimators=120, learning_rate=0.08, max_depth=3, random_state=42),
-        "Neural Network (MLP)": MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=400, random_state=42)
+        "Logistic Regression": LogisticRegression(C=0.6, max_iter=1000, random_state=42),
+        "Random Forest": RandomForestClassifier(n_estimators=180, max_depth=7, min_samples_leaf=2, random_state=42),
+        "Gradient Boosting": GradientBoostingClassifier(n_estimators=130, learning_rate=0.035, max_depth=4, random_state=42),
+        "Neural Network (MLP)": MLPClassifier(hidden_layer_sizes=(64, 32), alpha=0.01, max_iter=500, random_state=42)
     }
 
     results = {}
